@@ -10,7 +10,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:security/recommended",
-    "prettier"
+    "plugin:prettier/recommended",
+    "prettier/prettier"
   ],
   "overrides": [],
   "parser": "@typescript-eslint/parser",
@@ -27,11 +28,24 @@
     "react",
     "@typescript-eslint",
     "react-hooks",
-    "import",
-    "prettier"
+    "import"
+    // "prettier"
   ],
   "rules": {
-    "prettier/prettier": "warn",
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "auto",
+        "singleQuote": true,
+        "printWidth": 110,
+        "tabWidth": 2,
+        "trailingComma":"all",
+        "bracketSpacing": true,
+        "semi": true,
+        "jsxBracketSameLine": false,
+        "arrowParens": "avoid"
+      }
+    ],
     "import/no-unresolved": "error",
     "max-len": ["warn", { "code": 115, "ignoreRegExpLiterals": true }],
     "no-use-before-define": "off",
@@ -75,12 +89,13 @@
         "project": "./tsconfig.json",
         "alias": {
           "map": [
-            ["@components", "./src/components"],
-            // ["@pages", "./src/components/pages"],
-            // ["@data", "./src/data"],
+            ["@", "./src"],
             ["@assets", "./src/assets"],
+            ["@routes", "./src/routes"],
+            ["@components", "./src/components"],
+            ["@pages", "./src/pages"]
+            // ["@data", "./src/data"],
             // ["@ctx", "./src/contexts"],
-            ["@", "./src"]
           ]
         }
       }

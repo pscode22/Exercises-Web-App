@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import mkcert from "vite-plugin-mkcert";
@@ -14,12 +13,13 @@ export default defineConfig({
   plugins: [react(), mkcert()],
   resolve: {
     alias: {
+      "@": path.resolve(__dirname, "./src"),
+      "@assets": path.resolve(__dirname, "./src/assets"),
+      "@routes": path.resolve(__dirname, "./src/routes"),
       "@components": path.resolve(__dirname, "./src/components"),
-      // '@pages': path.resolve(__dirname, './src/components/pages'),
+      '@pages': path.resolve(__dirname, './src/pages'),
       // '@data': path.resolve(__dirname, './src/data'),
       // '@ctx': path.resolve(__dirname, './src/contexts'),
-      "@assets": path.resolve(__dirname, "./src/assets"),
-      "@": path.resolve(__dirname, "./src"),
     },
   },
 });
