@@ -1,3 +1,7 @@
 export default function RouteFavorites() {
-  return <div />;
+  return (
+    <div>
+      <p>Favorites Section</p>
+    </div>
+  );
 }
