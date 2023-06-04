@@ -10,7 +10,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:security/recommended",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
     "prettier/prettier"
   ],
   "overrides": [],
@@ -28,8 +28,8 @@
     "react",
     "@typescript-eslint",
     "react-hooks",
-    "import"
-    // "prettier"
+    "import",
+    "prettier/prettier"
   ],
   "rules": {
     "prettier/prettier": [
