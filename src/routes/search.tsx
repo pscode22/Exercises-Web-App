@@ -1,86 +1,62 @@
-import { Box, Flex, Select } from '@mantine/core';
-import { IconChevronDown } from '@tabler/icons-react';
-import { useState, useEffect } from 'react';
-import { byEquipments, byMuscles, byBodyParts } from '@/components/dataFields';
+import { Box, Center, Divider, Flex, Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import SearchBox from '@/components/searchBox';
+import { IconSearch } from '@tabler/icons-react';
+import exerciseGif from '@assets/exercise-gifs/0001.gif';
+// import { useState } from 'react';
+
+// type exerciseObj = {
+//   bodyPart: string;
+//   equipment: string;
+//   gifUrl: string;
+//   id: string;
+//   name: string;
+//   target: string;
+// };
 
 export default function RouteSearch() {
-  const [searchBy, setSearchBy] = useState<string>('');
-  const [selectData, setSelectDate] = useState<string[]>([]);
-
-  useEffect(() => {
-    if (searchBy) {
-      if (searchBy === 'Equipments') setSelectDate(byEquipments);
-      if (searchBy === 'Muscles') setSelectDate(byMuscles);
-      if (searchBy === 'Body Parts') setSelectDate(byBodyParts);
-    }
-  }, [searchBy]);
-
+  // const [addToFavorites, setAddToFavorites] = useState<exerciseObj[]>([]);
+  // const [removeFromFavorites, setRemoveFromFavorites] = useState<exerciseObj[]>([]);
   return (
-    <Flex justify="center" align="center" mt="md">
-      <Box
-        w={{ base: 200, sm: 400, lg: 500 }}
-        sx={theme => ({
-          display: 'flex',
-          // backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-          backgroundColor: '#1011136a',
-          // color: theme.colorScheme === 'dark' ? theme.colors.blue[4] : theme.colors.blue[7],
-          color: '#f76808',
-          textAlign: 'center',
-          borderRadius: theme.radius.md,
-          cursor: 'pointer',
+    <Box>
+      <SearchBox />
 
-          '&:hover': {
-            backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-          },
-        })}
-      >
-        <Select
-          data={selectData}
-          placeholder={`Search by ${searchBy}`}
-          variant="unstyled"
-          rightSection={<div />}
-          rightSectionWidth={0}
-          withAsterisk
-          searchable
-          bg="#25262b"
-          styles={{
-            rightSection: { pointerEvents: 'none' },
-            input: {
-              padding: '0.625rem 1rem',
-            },
-            root: { borderRadius: '.25rem 0 0 .25rem' },
-          }}
-          w="70%"
-          transitionProps={{
-            transition: 'pop-top-left',
-            duration: 80,
-            timingFunction: 'ease',
-          }}
-        />
-        <Select
-          placeholder="Pick one"
-          rightSection={<IconChevronDown color="#fff" size="1rem" />}
-          rightSectionWidth={30}
-          defaultValue="Equipments"
-          styles={{
-            rightSection: { pointerEvents: 'none' },
-            input: { padding: '0.625rem 1rem', color: '#fff' },
-            item: {
-              '&[data-selected]': {
-                '&, &:hover': {
-                  backgroundColor: '#f76808',
-                },
-              },
-            },
-            root: { borderRadius: '0 .25rem .25rem 0' },
-          }}
-          data={['Equipments', 'Muscles', 'Body Parts']}
-          bg="#f76808"
-          variant="unstyled"
-          w="30%"
-          onSearchChange={setSearchBy}
-        />
-      </Box>
-    </Flex>
+      <Divider
+        my="xl"
+        variant="dashed"
+        labelPosition="center"
+        label={
+          <Flex align="center" gap={5}>
+            <IconSearch size={18} style={{ marginTop: '.0825rem' }} />
+            <Box ml={5} fz={20}>
+              Search results
+            </Box>
+          </Flex>
+        }
+      />
+
+      <Center mt={20}>
+        <Card shadow="sm" padding="lg" radius="md" withBorder w={300}>
+          <Card.Section>
+            <Image src={exerciseGif} height={180} alt="Norway" />
+          </Card.Section>
+
+          <Group position="apart" mt="md" mb="xs">
+            <Text weight={500}>Exercise 0001</Text>
+            <Badge color="pink" variant="light">
+              On Sale
+            </Badge>
+          </Group>
+
+          <Text size="sm" color="dimmed">
+            With Fjord Tours you can explore more of the magical fjord landscapes with tours and activities on
+            and around the fjords of Norway
+          </Text>
+
+          <Button variant="outline" color="orange" fullWidth mt="md" radius="md">
+            Add to Favorites
+          </Button>
+        </Card>
+      </Center>
+    </Box>
   );
 }
